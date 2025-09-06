@@ -1,0 +1,36 @@
+{
+  "name": "eslint-plugin-baseline",
+  "version": "1.0.0",
+  "description": "An ESLint plugin to help web developers adopt modern web features by identifying non-Baseline 'Widely available' APIs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node run-tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Satya-s89/Polyfill-Pal.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "web-features",
+    "baseline",
+    "linter",
+    "developer-tools",
+    "web-development"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "web-features": "^2.46.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.34.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.34.0",
+    "mocha": "^11.7.2"
+  }
+}

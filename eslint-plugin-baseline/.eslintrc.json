@@ -1,0 +1,8 @@
+{
+  "plugins": [
+    "./"
+  ],
+  "rules": {
+    "baseline/no-non-baseline-features": "warn"
+  }
+}
