@@ -8,6 +8,22 @@ const featureMap = {
   'padStart': 'string-pad',
   'padEnd': 'string-pad',
   'toSorted': 'array-by-copy',
+  'toReversed': 'array-by-copy',
+  'toSpliced': 'array-by-copy',
+  'with': 'array-by-copy',
+};
+
+const fixSuggestions = {
+  'toSorted': (node) => `[...${node.callee.object.name}].sort()`,
+  'toReversed': (node) => `[...${node.callee.object.name}].reverse()`,
+  'toSpliced': (node) => {
+    const args = node.arguments.map(arg => arg.raw || arg.name).join(', ');
+    return `${node.callee.object.name}.slice().splice(${args})`;
+  },
+  'with': (node) => {
+    const [index, value] = node.arguments;
+    return `${node.callee.object.name}.map((item, i) => i === ${index.raw || index.name} ? ${value.raw || value.name} : item)`;
+  },
 };
 
 module.exports = {
@@ -22,6 +38,7 @@ module.exports = {
       noNonBaselineFeatures: "The '{{feature}}' method is not a Baseline 'Widely available' feature. Current support: {{status}}."
     },
     schema: [],
+    fixable: "code",
   },
   create(context) {
     return {
@@ -34,14 +51,23 @@ module.exports = {
             const feature = features[featureId];
 
             if (feature && feature.status.baseline !== 'high') {
-              context.report({
+              const report = {
                 node: node,
                 messageId: 'noNonBaselineFeatures',
                 data: {
                   feature: propertyName,
                   status: feature.status.baseline,
                 }
-              });
+              };
+
+              if (fixSuggestions[propertyName]) {
+                report.fix = function(fixer) {
+                  const replacement = fixSuggestions[propertyName](node);
+                  return fixer.replaceText(node, replacement);
+                };
+              }
+
+              context.report(report);
             }
           }
         }
