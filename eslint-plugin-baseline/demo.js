@@ -1,9 +1,8 @@
-// A good example that should pass your linter.
-// Object.keys() is a Baseline 'high' feature.
-const obj = { name: "POLYFILL_PAL" };
+// Valid code - these features have high baseline support
+const obj = { a: 1, b: 2 };
 const keys = Object.keys(obj);
+const str = 'hello'.padStart(10, '0');
 
-// A bad example that should be flagged by your linter.
-// Array.prototype.toSorted() is a Baseline 'low' feature.
-const arr = [1, 2, 3];
-const sortedArr = arr.toSorted();
+// Invalid code - these features have low baseline support
+const arr = [3, 1, 2];
+const sorted = arr.toSorted(); // Should trigger error

@@ -1,7 +1,7 @@
-import baselinePlugin from 'eslint-plugin-baseline';
-import js from "@eslint/js";
+const baselinePlugin = require('./index.js');
+const js = require('@eslint/js');
 
-export default [
+module.exports = [
   // This loads the standard recommended rules for JavaScript.
   js.configs.recommended,
   {
