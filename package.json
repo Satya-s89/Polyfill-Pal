@@ -1,0 +1,17 @@
+{
+  "name": "polyfill-pal",
+  "version": "1.0.0",
+  "description": "ESLint plugin for web baseline feature detection",
+  "main": "eslint-plugin-baseline/index.js",
+  "dependencies": {
+    "web-features": "^2.46.0"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.34.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Satya-s89/Polyfill-Pal.git"
+  },
+  "license": "MIT"
+}
