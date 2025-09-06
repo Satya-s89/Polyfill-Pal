@@ -1,5 +1,5 @@
 {
-  "name": "eslint-plugin-baseline",
+  "name": "eslint-plugin-web-baseline",
   "version": "1.0.0",
   "description": "An ESLint plugin to help web developers adopt modern web features by identifying non-Baseline 'Widely available' APIs.",
   "main": "index.js",
